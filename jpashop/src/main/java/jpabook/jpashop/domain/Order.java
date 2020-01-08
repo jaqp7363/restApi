@@ -18,11 +18,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "orders")
 @Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
 	@Id @GeneratedValue
