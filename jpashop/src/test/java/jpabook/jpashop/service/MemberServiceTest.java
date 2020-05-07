@@ -26,7 +26,7 @@ public class MemberServiceTest {
 	
 	@Test
 	@Rollback(false)
-	public void È¸¿ø°¡ÀÔ() throws Exception {
+	public void íšŒì›ê°€ì…() throws Exception {
 		Member member = new Member();
 		member.setName("kim");
 		
@@ -36,7 +36,7 @@ public class MemberServiceTest {
 	}
 	
 	@Test
-	public void Áßº¹_È¸¿ø_¿¹¿Ü() throws Exception {
+	public void ì¤‘ë³µ_íšŒì›_ì˜ˆì™¸() throws Exception {
 		
 		Member member1 = new Member();
 		member1.setName("kim");

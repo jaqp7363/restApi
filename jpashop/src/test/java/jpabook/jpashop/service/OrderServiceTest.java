@@ -36,14 +36,14 @@ public class OrderServiceTest {
 	OrderRepository orderRepository;
 	
 	@Test
-	public void »óÇ°ÁÖ¹®() {
+	public void ìƒí’ˆì£¼ë¬¸() {
 		Member member = new Member();
-		member.setName("¿îµÕÀÌ");
-		member.setAddress(new Address("¼­¿ï", "Àá½Ç", "123-123"));
+		member.setName("ï¿½ï¿½ï¿½ï¿½ï¿½");
+		member.setAddress(new Address("ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½", "123-123"));
 		em.persist(member);
 		
 		Item book = new Book();
-		book.setName("º¸Çè ÀÚ°İÁõ");
+		book.setName("ï¿½ï¿½ï¿½ï¿½ ï¿½Ú°ï¿½ï¿½ï¿½");
 		book.setPrice(8000);
 		book.setStockQuantity(7);
 		em.persist(book);
@@ -54,16 +54,16 @@ public class OrderServiceTest {
 		
 		Order getOrder = orderRepository.findOne(orderId);
 		
-		assertEquals("»óÇ° ÁÖ¹®½Ã »óÅÂ´Â ORDER", OrderStatus.ORDER, getOrder.getStatus());
-		assertEquals("ÁÖ¹®ÇÑ »óÇ° Á¾·ù ¼ö°¡ Á¤È®ÇØ¾ß ÇÑ´Ù.", 1, getOrder.getOrderItems().size());
-		assertEquals("ÁÖ¹® °¡°İÀº °¡°İ * ¼ö·®ÀÌ´Ù.", 8000 * 2, getOrder.getTotalPrice());
-		assertEquals("ÁÖ¹® ¼ö·®¸¸Å­ Àç°í°¡ ÁÙ¾î¾ß ÇÑ´Ù.",5, book.getStockQuantity());
+		assertEquals("ï¿½ï¿½Ç° ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½ ORDER", OrderStatus.ORDER, getOrder.getStatus());
+		assertEquals("ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È®ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.", 1, getOrder.getOrderItems().size());
+		assertEquals("ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ * ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.", 8000 * 2, getOrder.getTotalPrice());
+		assertEquals("ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½ ï¿½Ñ´ï¿½.",5, book.getStockQuantity());
 	}
 	
 	@Test
-	public void ÁÖ¹®Ãë¼Ò() throws Exception {
-		Member member = createMember("Å×½ºÆÃ");
-		Book item = createItem("°ğ Ãë¼Ò", 500, 100);
+	public void ì£¼ë¬¸ì·¨ì†Œ() throws Exception {
+		Member member = createMember("ï¿½×½ï¿½ï¿½ï¿½");
+		Book item = createItem("ï¿½ï¿½ ï¿½ï¿½ï¿½", 500, 100);
 		
 		int orderCount = 2;
 		
@@ -72,26 +72,26 @@ public class OrderServiceTest {
 		orderService.cancelOrder(orderId);
 		
 		Order order = orderRepository.findOne(orderId);
-		assertEquals("ÁÖ¹® »óÅÂ´Â Ãë¼Ò", OrderStatus.CANCEL, order.getStatus());
-		assertEquals("item¼ö·® ¿øº¹", 100, item.getStockQuantity());
+		assertEquals("ì£¼ë¬¸ìƒíƒœ", OrderStatus.CANCEL, order.getStatus());
+		assertEquals("ì£¼ë¬¸ìˆ˜ëŸ‰", 100, item.getStockQuantity());
 	}
 	
 	@Test(expected = NotEnoughStockExceptioin.class)
-	public void »óÇ°ÁÖ¹®_Àç°í¼ö·®ÃÊ°ú() throws Exception {
-		Member member = createMember("°í¿îÁ¤");
-		Item book = createItem("³ó¾÷ÀÎÀÇ »î", 5000, 2);
+	public void ìƒí’ˆì£¼ë¬¸_ì¬ê³ ìˆ˜ëŸ‰ì´ˆê³¼() throws Exception {
+		Member member = createMember("í…ŒìŠ¤íŠ¸");
+		Item book = createItem("JPA ë¶", 5000, 2);
 		
 		int orderCount = 11;
 		
 		orderService.order(member.getId(), book.getId(), orderCount);
 		
-		fail("Àç°í¼ö·® ºÎÁ·");
+		fail("ì¬ê³  ìˆ˜ëŸ‰ ë¶€ì¡± ì˜ˆì™¸ê°€ ë°œìƒí•´ì•¼ í•œë‹¤.");
 	}
 
 	public Member createMember(String name) {
 		Member member = new Member();
 		member.setName(name);
-		member.setAddress(new Address("¼­¿ï", "Àá½Ç", "123-123"));
+		member.setAddress(new Address("ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½", "123-123"));
 		em.persist(member);
 		return member;
 	}

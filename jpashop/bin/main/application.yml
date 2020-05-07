@@ -7,7 +7,9 @@ spring:
     
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
+      #create 드랍 후 새로
+      #none 아무것도 안함
     properties:
       hibernate:
 #        show_sql: true

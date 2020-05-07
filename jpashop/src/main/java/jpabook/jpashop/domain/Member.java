@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -25,6 +27,6 @@ public class Member {
 	@Embedded
 	private Address address;
 	
-	@OneToMany(mappedBy = "member")//OrderÀÇ member°¡ ÁÖÀÎÀÌ´Ù.
+	@OneToMany(mappedBy = "member")//Orderï¿½ï¿½ memberï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 	private List<Order> orders = new ArrayList<>();
 }
